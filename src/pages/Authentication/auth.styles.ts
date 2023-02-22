@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-self: center;
   gap: 1rem;
   margin-top: 4rem;
+  overflow: hidden;
 `;
 
 export const Title = styled.h1`
@@ -39,4 +40,8 @@ export const ExtraInformationsLink = styled.a`
   color: ${(props) => props.theme.palette.primary.main};
   cursor: pointer;
   font-weight: 600;
+`;
+
+export const IconContainer = styled.a`
+  padding-right: 36rem;
 `;

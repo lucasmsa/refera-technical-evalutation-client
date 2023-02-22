@@ -7,16 +7,20 @@ import {
   ExtraInformationsLink,
   FormContainer,
   Title,
-} from './styles';
+} from '../auth.styles';
 import { Fragment } from 'react';
-import { LoginWaves } from '~/components/Waves/LoginWaves';
+import { SignUpWaves } from '~/components/Waves/SignUpWaves';
 
-export function Login() {
+export function SignUp() {
   return (
     <Fragment>
       <Container>
-        <Title>Welcome 👋</Title>
+        <Title>Create an account</Title>
         <FormContainer>
+          <Input.Label>Name</Input.Label>
+          <Input.Root>
+            <Input.FormField type='text' onChange={() => 1} />
+          </Input.Root>
           <Input.Label>Email</Input.Label>
           <Input.Root>
             <Input.FormField type='email' onChange={() => 1} />
@@ -26,14 +30,14 @@ export function Login() {
             <Input.FormField type='password' onChange={() => 1} />
           </Input.Root>
           <Button.Root onClick={() => 1}>
-            <Button.Typography>Login</Button.Typography>
+            <Button.Typography>Create account</Button.Typography>
           </Button.Root>
         </FormContainer>
         <ExtraInformationsContainer>
-          <ExtraInformationsLabel>Don&apos;t have any account?</ExtraInformationsLabel>
-          <ExtraInformationsLink>Sign Up</ExtraInformationsLink>
+          <ExtraInformationsLabel>Already have an account?</ExtraInformationsLabel>
+          <ExtraInformationsLink href='/'>Log in</ExtraInformationsLink>
         </ExtraInformationsContainer>
-        <LoginWaves />
+        <SignUpWaves />
       </Container>
     </Fragment>
   );

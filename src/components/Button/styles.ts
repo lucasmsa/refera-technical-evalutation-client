@@ -13,6 +13,11 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.palette.common.white};
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.ternary.main};
+  }
 `;
 
 export const IconContainer = styled.div``;
