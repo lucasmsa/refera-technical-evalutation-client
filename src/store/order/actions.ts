@@ -61,3 +61,23 @@ export const getCategories = createAsyncThunk(
     }
   },
 );
+
+export const getOrder = createAsyncThunk(
+  'GET_ORDER',
+  async ({ id }: { id: string }, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState() as { auth: AuthState };
+      const { token } = auth;
+
+      const response = await api.get(API_ROUTES.app.order(id), generateConfig(token));
+
+      return response.data;
+    } catch (error: any) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message || 'Something went wrong');
+      }
+    }
+  },
+);

@@ -13,7 +13,11 @@ import { useSelector } from 'react-redux';
 import { columnData } from '~/util/columnData';
 import { useMemo } from 'react';
 
-export function Table() {
+interface TableProps {
+  onRowClick: (rowId: string) => void;
+}
+
+export function Table({ onRowClick }: TableProps) {
   const data = useSelector((state: RootState) => state.order.data);
   const columns = useMemo(() => columnData, []);
 
@@ -39,7 +43,7 @@ export function Table() {
         {rows.map((row: any) => {
           prepareRow(row);
           return (
-            <TableRow key={row} {...row.getRowProps()}>
+            <TableRow onClick={() => onRowClick(row.original.id)} key={row} {...row.getRowProps()}>
               {row.cells.map((cell: any) => {
                 return (
                   <TableDataCell key={cell} {...cell.getCellProps()}>

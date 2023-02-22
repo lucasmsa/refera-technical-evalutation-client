@@ -17,7 +17,7 @@ export const InputField = styled.input`
   border: none;
   background-color: transparent;
   color: ${(props) => props.theme.palette.common.black};
-  width: 100%;
+  width: 12rem;
 
   &:focus {
     font-weight: 600;

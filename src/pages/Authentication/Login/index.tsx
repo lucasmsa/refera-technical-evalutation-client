@@ -25,6 +25,7 @@ export function Login() {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
   const { loading, token, success } = useSelector((state: RootState) => state.auth);
@@ -36,6 +37,8 @@ export function Login() {
     const { email, password } = data as Authenticate;
 
     dispatch(authenticateUser({ email, password }));
+
+    reset();
   }
 
   useEffect(() => {

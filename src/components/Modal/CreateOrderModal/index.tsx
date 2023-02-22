@@ -6,9 +6,11 @@ import { customModalStyles } from '../custom.modal.styles';
 import {
   DescriptionContainer,
   FormContainer,
+  IconContainer,
   LeftSection,
   MidSection,
   Title,
+  TopContainer,
 } from '../modal.styles';
 import { Controller, useForm } from 'react-hook-form';
 import { inputOptions } from '~/util/inputOptions';
@@ -18,6 +20,7 @@ import { AppDispatch, RootState } from '~/store';
 import { useTheme } from 'styled-components';
 import { Order } from '~/interfaces/Order';
 import { createOrder } from '~/store/order/actions';
+import { IoMdCloseCircleOutline } from 'react-icons/io';
 
 type CreateModalProps = ModalProps;
 
@@ -41,6 +44,7 @@ export function CreateOrderModal({
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -71,6 +75,7 @@ export function CreateOrderModal({
 
     dispatch(createOrder(data as Order));
 
+    reset();
     closeModal();
   }
 
@@ -79,9 +84,15 @@ export function CreateOrderModal({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       style={customModalStyles}
+      ariaHideApp={false}
       contentLabel={contentLabel}
     >
-      <Title>Create new order</Title>
+      <TopContainer>
+        <Title>New order</Title>
+        <IconContainer onClick={() => closeModal()}>
+          <IoMdCloseCircleOutline size={30} color={theme.palette.ternary.main} />
+        </IconContainer>
+      </TopContainer>
       <FormContainer onSubmit={handleSubmit(handleOrderSubmission)}>
         <LeftSection>
           <Input.FormFieldController

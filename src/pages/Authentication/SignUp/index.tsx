@@ -30,6 +30,7 @@ export function SignUp() {
 
   const {
     handleSubmit,
+    reset,
     control,
     formState: { errors: formErrors },
   } = useForm();
@@ -38,6 +39,8 @@ export function SignUp() {
     const { name, email, password } = data as Register;
 
     dispatch(signUpUser({ name, email, password }));
+
+    reset();
   }
 
   useEffect(() => {

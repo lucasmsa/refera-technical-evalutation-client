@@ -6,7 +6,7 @@ export const API_ROUTES = {
   app: {
     categories: '/category/categories/',
     orders: '/order/orders/',
-    order: (id: string) => `/order/order/${id}/`,
+    order: (id: string) => `/order/orders/${id}/`,
     createOrder: '/order/orders/',
   },
 };

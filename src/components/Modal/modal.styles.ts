@@ -44,3 +44,47 @@ export const DescriptionContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `;
+
+export const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: ${(props) => props.theme.palette.common.black};
+  gap: 0.25rem;
+  width: 100%;
+`;
+
+export const DetailsLabel = styled.p`
+  font-size: 0.8rem;
+`;
+
+export const DetailsValue = styled.h3`
+  font-size: 1rem;
+  font-weight: 600;
+`;
+
+export const DetailsRowContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 4rem;
+  margin-top: 2rem;
+  align-items: space-between;
+  justify-content: space-between;
+`;
+
+export const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const IconContainer = styled.button`
+  all: unset;
+  display: flex;
+  transition: 0.2s ease-in-out all;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
+`;
