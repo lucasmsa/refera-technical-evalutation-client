@@ -49,26 +49,26 @@ export function SignUp() {
       <Container>
         <Title>Create an account</Title>
         <FormContainer onSubmit={handleSubmit(handleRegistration)}>
-          <Input.Label>Name</Input.Label>
           <Input.FormFieldController
             control={control}
             name='name'
+            label='Name'
             rules={inputOptions.name}
             errorMessage={formErrors.name?.message}
           />
-          <Input.Label>Email</Input.Label>
           <Input.FormFieldController
             type='email'
             control={control}
             name='email'
+            label='Email'
             rules={inputOptions.email}
             errorMessage={formErrors.email?.message}
           />
-          <Input.Label>Password</Input.Label>
           <Input.FormFieldController
             type='password'
             control={control}
             name='password'
+            label='Password'
             rules={inputOptions.password}
             errorMessage={formErrors.password?.message}
           />

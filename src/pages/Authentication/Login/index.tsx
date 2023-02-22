@@ -49,19 +49,19 @@ export function Login() {
       <Container>
         <Title>Welcome 👋</Title>
         <FormContainer onSubmit={handleSubmit(handleAuthentication)}>
-          <Input.Label>Email</Input.Label>
           <Input.FormFieldController
             type='email'
             control={control}
             name='email'
+            label='Email'
             rules={inputOptions.email}
             errorMessage={errors.email?.message}
           />
-          <Input.Label>Password</Input.Label>
           <Input.FormFieldController
             type='password'
             control={control}
             name='password'
+            label='Password'
             rules={inputOptions.password}
             errorMessage={errors.password?.message}
           />

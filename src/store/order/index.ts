@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Order } from '~/interfaces/Order';
-import { getOrders } from './actions';
+import { createOrder, getCategories, getOrders } from './actions';
 import { displayToast } from '~/util/displayToast';
 
 export interface OrderState {
   loading: boolean;
   data: Order[];
+  categories: Category[];
   error: any;
   success: boolean | null;
 }
@@ -13,6 +14,7 @@ export interface OrderState {
 const initialState = {
   loading: false,
   data: [],
+  categories: [],
   error: null,
   success: null,
 } as OrderState;
@@ -22,6 +24,7 @@ const orderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Get Order
     builder.addCase(getOrders.pending, (state) => {
       state.loading = true;
       state.error = null;
@@ -32,6 +35,42 @@ const orderSlice = createSlice({
       state.data = payload;
     });
     builder.addCase(getOrders.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || action.payload;
+
+      displayToast({ message: state.error, type: 'error' });
+    });
+
+    // Get Categories
+    builder.addCase(getCategories.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getCategories.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+
+      state.categories = payload;
+    });
+    builder.addCase(getCategories.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || action.payload;
+
+      displayToast({ message: state.error, type: 'error' });
+    });
+
+    // Create Order
+    builder.addCase(createOrder.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(createOrder.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+
+      state.data = [...state.data, payload];
+    });
+    builder.addCase(createOrder.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message || action.payload;
 

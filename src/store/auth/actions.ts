@@ -6,7 +6,7 @@ import { API_ROUTES } from '~/services/apiRoutes';
 import { generateConfig } from '~/services/generateConfig';
 
 export const signUpUser = createAsyncThunk(
-  API_ROUTES.auth.register,
+  'SIGN_UP_USER',
   async ({ name, email, password }: Register, { rejectWithValue, dispatch }) => {
     try {
       await api.post(API_ROUTES.auth.register, { name, email, password }, generateConfig());
@@ -24,7 +24,7 @@ export const signUpUser = createAsyncThunk(
 );
 
 export const authenticateUser = createAsyncThunk(
-  API_ROUTES.auth.login,
+  'AUTHENTICATE_USER',
   async ({ email, password }: Authenticate, { rejectWithValue }) => {
     try {
       const { data } = await api.post(API_ROUTES.auth.login, { email, password }, generateConfig());

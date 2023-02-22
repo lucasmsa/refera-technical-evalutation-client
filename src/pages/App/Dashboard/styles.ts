@@ -7,7 +7,6 @@ export const Container = styled.div`
   flex: 1;
   height: 100vh;
   align-items: center;
-  overflow: hidden;
   background: ${(props) => props.theme.palette.light.main};
 `;
 
@@ -16,6 +15,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   width: 90%;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   gap: 3rem;
 `;
 

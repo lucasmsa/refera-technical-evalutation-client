@@ -8,15 +8,17 @@ import {
   TableHeadCell,
   TableRow,
 } from './styles';
+import { RootState } from '~/store';
+import { useSelector } from 'react-redux';
+import { columnData } from '~/util/columnData';
+import { useMemo } from 'react';
 
-interface TableProps {
-  data: Order[];
-  columns: Array<Column<Order>>;
-}
+export function Table() {
+  const data = useSelector((state: RootState) => state.order.data);
+  const columns = useMemo(() => columnData, []);
 
-export function Table({ data, columns }: TableProps) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-    columns,
+    columns: columns as Column<Order>[],
     data,
   });
 
