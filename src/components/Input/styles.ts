@@ -31,3 +31,15 @@ export const LabelField = styled.label`
   color: ${(props) => props.theme.palette.common.black};
   margin-bottom: -0.5rem;
 `;
+
+export const ControllerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const ErrorText = styled.p`
+  color: ${(props) => props.theme.palette.alert.main};
+  font-size: 0.75rem;
+  font-weight: 600;
+`;

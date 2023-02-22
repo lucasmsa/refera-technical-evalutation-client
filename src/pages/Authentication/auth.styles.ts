@@ -29,6 +29,8 @@ export const ExtraInformationsContainer = styled.div`
   flex-direction: row;
   gap: 0.3rem;
   font-size: 0.8rem;
+  height: 2rem;
+  align-items: center;
 `;
 
 export const ExtraInformationsLabel = styled.p`
@@ -40,6 +42,15 @@ export const ExtraInformationsLink = styled.a`
   color: ${(props) => props.theme.palette.primary.main};
   cursor: pointer;
   font-weight: 600;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.palette.ternary.main};
+  }
 `;
 
 export const IconContainer = styled.a`

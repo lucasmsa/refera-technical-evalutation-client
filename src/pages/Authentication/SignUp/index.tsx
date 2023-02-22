@@ -9,28 +9,55 @@ import {
   Title,
 } from '../auth.styles';
 import { Fragment } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { SignUpWaves } from '~/components/Waves/SignUpWaves';
+import { inputOptions } from '~/util/inputOptions';
 
 export function SignUp() {
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  function handleRegistration(data: any) {
+    console.log('Registration data:');
+  }
+
+  function handleErrors(error: any) {
+    console.log('Errors:');
+  }
+
   return (
     <Fragment>
       <Container>
         <Title>Create an account</Title>
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit(handleRegistration, handleErrors)}>
           <Input.Label>Name</Input.Label>
-          <Input.Root>
-            <Input.FormField type='text' onChange={() => 1} />
-          </Input.Root>
+          <Input.FormFieldController
+            control={control}
+            name='name'
+            rules={inputOptions.name}
+            errorMessage={errors.name?.message}
+          />
           <Input.Label>Email</Input.Label>
-          <Input.Root>
-            <Input.FormField type='email' onChange={() => 1} />
-          </Input.Root>
+          <Input.FormFieldController
+            type='email'
+            control={control}
+            name='email'
+            rules={inputOptions.email}
+            errorMessage={errors.email?.message}
+          />
           <Input.Label>Password</Input.Label>
-          <Input.Root>
-            <Input.FormField type='password' onChange={() => 1} />
-          </Input.Root>
-          <Button.Root onClick={() => 1}>
-            <Button.Typography>Create account</Button.Typography>
+          <Input.FormFieldController
+            type='password'
+            control={control}
+            name='password'
+            rules={inputOptions.password}
+            errorMessage={errors.password?.message}
+          />
+          <Button.Root>
+            <Button.Typography type='submit'>Create account</Button.Typography>
           </Button.Root>
         </FormContainer>
         <ExtraInformationsContainer>

@@ -18,5 +18,9 @@ export const theme: DefaultTheme = {
       main: '#153F66',
       contrastText: '#fff',
     },
+    alert: {
+      main: '#EF4444',
+      contrastText: '#fff',
+    },
   },
 };
