@@ -16,6 +16,7 @@ declare module 'styled-components' {
       secondary: Palette;
       ternary: Palette;
       alert: Palette;
+      disabled: Palette;
     };
   }
 }

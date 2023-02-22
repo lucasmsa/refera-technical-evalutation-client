@@ -45,14 +45,9 @@ export const ExtraInformationsLink = styled.a`
   height: 100%;
   display: flex;
   align-items: center;
-
   transition: color 0.3s ease-in-out;
-
+  z-index: 10;
   &:hover {
     color: ${({ theme }) => theme.palette.ternary.main};
   }
-`;
-
-export const IconContainer = styled.a`
-  padding-right: 36rem;
 `;

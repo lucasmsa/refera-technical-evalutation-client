@@ -18,6 +18,10 @@ export const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.palette.ternary.main};
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.disabled.main};
+  }
 `;
 
 export const IconContainer = styled.div``;

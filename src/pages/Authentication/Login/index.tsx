@@ -8,10 +8,18 @@ import {
   FormContainer,
   Title,
 } from '../auth.styles';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { LoginWaves } from '~/components/Waves/LoginWaves';
 import { useForm } from 'react-hook-form';
 import { inputOptions } from '~/util/inputOptions';
+import { CLIENT_URLS } from '~/routes/names';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '~/store';
+import { Dots } from 'react-activity';
+import { useTheme } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { authenicateUser } from '~/store/auth/actions';
+import { Authenticate } from '~/interfaces/Authenticate';
 
 export function Login() {
   const {
@@ -19,20 +27,28 @@ export function Login() {
     control,
     formState: { errors },
   } = useForm();
+  const { loading, token, success } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const theme = useTheme();
 
-  function handleRegistration(data: any) {
-    console.log('Registration data:');
+  function handleAuthentication(data: any) {
+    const { email, password } = data as Authenticate;
+
+    dispatch(authenicateUser({ email, password }));
   }
 
-  function handleErrors(error: any) {
-    console.log('Errors:');
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(CLIENT_URLS.dashboard);
+    }
+  }, [navigate, success, token]);
 
   return (
     <Fragment>
       <Container>
         <Title>Welcome 👋</Title>
-        <FormContainer onSubmit={handleSubmit(handleRegistration, handleErrors)}>
+        <FormContainer onSubmit={handleSubmit(handleAuthentication)}>
           <Input.Label>Email</Input.Label>
           <Input.FormFieldController
             type='email'
@@ -49,14 +65,15 @@ export function Login() {
             rules={inputOptions.password}
             errorMessage={errors.password?.message}
           />
-          <Button.Root onClick={() => 1}>
+          <Button.Root type='submit' disabled={loading}>
             <Button.Typography>Login</Button.Typography>
           </Button.Root>
         </FormContainer>
         <ExtraInformationsContainer>
           <ExtraInformationsLabel>Don&apos;t have any account?</ExtraInformationsLabel>
-          <ExtraInformationsLink href='/signup'>Sign Up</ExtraInformationsLink>
+          <ExtraInformationsLink href={CLIENT_URLS.signup}>Sign Up</ExtraInformationsLink>
         </ExtraInformationsContainer>
+        {loading && <Dots color={theme.palette.ternary.main} size={32} />}
         <LoginWaves />
       </Container>
     </Fragment>
