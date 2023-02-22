@@ -22,7 +22,7 @@ import { CLIENT_URLS } from '~/routes/names';
 import { useNavigate } from 'react-router-dom';
 
 export function SignUp() {
-  const { token } = useSelector((state: RootState) => state.auth);
+  const { token, loading } = useSelector((state: RootState) => state.auth);
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();

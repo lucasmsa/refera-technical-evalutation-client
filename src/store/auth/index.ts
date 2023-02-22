@@ -14,7 +14,6 @@ const token = getUserToken();
 
 const initialState = {
   loading: false,
-  user: {},
   token,
   error: null,
   success: null,
@@ -23,7 +22,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      localStorage.removeItem('token');
+      state.token = null;
+      state.loading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     // Sign up
     builder.addCase(signUpUser.pending, (state) => {
@@ -62,4 +68,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { logout } = authSlice.actions;
 export const { reducer } = authSlice;

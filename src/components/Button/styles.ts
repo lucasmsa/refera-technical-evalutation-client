@@ -13,10 +13,11 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.palette.common.white};
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.ternary.main};
+    scale: 1.05;
   }
 
   &:disabled {
