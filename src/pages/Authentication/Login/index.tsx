@@ -18,7 +18,7 @@ import { AppDispatch, RootState } from '~/store';
 import { Dots } from 'react-activity';
 import { useTheme } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { authenicateUser } from '~/store/auth/actions';
+import { authenticateUser } from '~/store/auth/actions';
 import { Authenticate } from '~/interfaces/Authenticate';
 
 export function Login() {
@@ -35,7 +35,7 @@ export function Login() {
   function handleAuthentication(data: any) {
     const { email, password } = data as Authenticate;
 
-    dispatch(authenicateUser({ email, password }));
+    dispatch(authenticateUser({ email, password }));
   }
 
   useEffect(() => {

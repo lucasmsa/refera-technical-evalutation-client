@@ -14,6 +14,10 @@ export const theme: DefaultTheme = {
       main: '#88B9E7',
       contrastText: '#fff',
     },
+    light: {
+      main: 'rgb(136, 185, 231, 0.2)',
+      contrastText: '#fff',
+    },
     ternary: {
       main: '#153F66',
       contrastText: '#fff',

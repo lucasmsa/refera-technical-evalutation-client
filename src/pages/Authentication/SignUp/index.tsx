@@ -14,7 +14,7 @@ import { SignUpWaves } from '~/components/Waves/SignUpWaves';
 import { inputOptions } from '~/util/inputOptions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '~/store';
-import { authenicateUser, signUpUser } from '~/store/auth/actions';
+import { signUpUser } from '~/store/auth/actions';
 import { Register } from '~/interfaces/register';
 import { Dots } from 'react-activity';
 import { useTheme } from 'styled-components';
@@ -22,7 +22,8 @@ import { CLIENT_URLS } from '~/routes/names';
 import { useNavigate } from 'react-router-dom';
 
 export function SignUp() {
-  const { loading, error, token, success } = useSelector((state: RootState) => state.auth);
+  const { token } = useSelector((state: RootState) => state.auth);
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const theme = useTheme();

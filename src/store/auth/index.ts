@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { authenicateUser, signUpUser } from './actions';
+import { authenticateUser, signUpUser } from './actions';
 import { displayToast } from '~/util/displayToast';
 import { getUserToken } from '~/util/getUserToken';
 
@@ -45,15 +45,15 @@ const authSlice = createSlice({
     });
 
     // Authenticate
-    builder.addCase(authenicateUser.pending, (state) => {
+    builder.addCase(authenticateUser.pending, (state) => {
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(authenicateUser.fulfilled, (state, { payload }) => {
+    builder.addCase(authenticateUser.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.token = payload.token;
     });
-    builder.addCase(authenicateUser.rejected, (state, { payload }) => {
+    builder.addCase(authenticateUser.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload;
 

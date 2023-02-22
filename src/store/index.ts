@@ -1,5 +1,6 @@
-import { AnyAction, Reducer, configureStore } from '@reduxjs/toolkit';
-import { AuthState, reducer as authReducer } from './auth';
+import { configureStore } from '@reduxjs/toolkit';
+import { reducer as authReducer } from './auth';
+import { reducer as orderReducer } from './order';
 
 export interface ThunkApiConfig {
   dispatch: AppDispatch;
@@ -9,6 +10,7 @@ export interface ThunkApiConfig {
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    order: orderReducer,
   },
 });
 

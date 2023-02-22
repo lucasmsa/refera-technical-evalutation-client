@@ -15,6 +15,7 @@ declare module 'styled-components' {
       primary: Palette;
       secondary: Palette;
       ternary: Palette;
+      light: Palette;
       alert: Palette;
       disabled: Palette;
     };
