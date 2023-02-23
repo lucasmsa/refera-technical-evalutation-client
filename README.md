@@ -1,81 +1,42 @@
-<h1 align='center'>Vite + React + TypeScript + Eslint + Prettier Template ⚡</h1>
+# 🧢 Refera Technical Evaluation Client
 
-Create a new project with Vite, React JS, TypeScript, Eslint, Prettier in just 1 second and you don't need to setup anything.
+This project is a web application built with React that provides a simple interface for listing, detailing and creating orders and handling user authentication. It was templated using `Typescript`, `Vite`, `Prettier`, `ESLint`
 
-#### **Vercel Deploy: https://vite-react-ts-eslint-prettier.vercel.app**
 
-![image](https://user-images.githubusercontent.com/70432453/170648662-2ff424b9-74e9-4754-a04d-512fe1496a3b.png)
-
-## **Some Features 📋**
-
-Alias Import
-
-![image](https://user-images.githubusercontent.com/70432453/170644457-ede03cca-44e9-4543-94d3-412c9d317063.png)
-
-Hook Warning
-
-![image](https://user-images.githubusercontent.com/70432453/170638708-23a20ffd-156e-494a-84be-b1e1cfdb5c93.png)
-
-Prettier Warning
-
-![image](https://user-images.githubusercontent.com/70432453/170639043-24423ed1-73cc-4730-b270-2acea1ae0c74.png)
-
-Etc...
-
-## **Using 📦**
-
-1. Clone Template
+### 🩴 Set up
+---
+- To get started with the project, you will need to have yarn installed on your machine
 
 ```
-git clone https://github.com/igdev116/vite-react-ts-eslint-prettier.git
+% git clone https://github.com/lucasmsa/refera-technical-evaluation-client.git
+
+% cd refera-technical-evaluation-client
+
+% yarn
+
+% yarn dev
 ```
 
-2. Install Packages
+- This will start the application on port 3000. You can then access it by opening a web browser and navigating to http://localhost:3000/
 
-```
-yarn install
-```
+### ⚙️ Features
+---
+- **User authentication**: Users can `signUp`, `login` and `logout`. Authentication is required to access the orders entity, so only users with a valid token can enter these authenticated routes, a wrapper protecting the routes was created and used with `react-router-dom`
+- **Token**: The authentication is made via token and is saved on the browser's `localStorage`, which is **not** the ideal and most secure way to deal with user authentication. Storing tokens in `localStorage` is not ideal because it can expose the token to security vulnerabilities such as `cross-site scripting (XSS)` attacks. 
+  - An attacker who gains access to the user's browser can potentially steal the token and use it to impersonate the user or perform other malicious actions. A better solution is to store the token in an `HTTP-only cookie`. This makes the token inaccessible to client-side JavaScript, which helps to prevent it from being stolen by an attacker. Also, you can set the cookie to be secure and have an expiration time to further improve security. By using cookies, you can still authenticate the user for future requests without exposing sensitive data to security risks. 
 
-3. Start Project
+- **Orders operations**: Users can create, list (using `react-table`), fetch details orders. Modals used to create a new order and fetch the details of an `Order` were created with `react-modal` library
 
-```
-yarn dev
-```
+- **Form validation and state managements**: All forms included in the application `login`, `signUp`, `createOrder` are properly validated using `react-hook-form`, providing a fast response to input validation errors and simplifying state management on these parts of the app. It was used in conjunction with `redux` and `@reduxjs/toolkit`, providing a performatic error handling system and requests handler for the application. Furthermore, `react-toastify` was used to provide success messages and API errors
 
-4. If you using git, delete the existing folder .git after cloning (open `git bash` or other terminal)
+### ☁️ How could a production environment be created?
+---
+`Vercel` could be used for example for a production environment
 
-```
-rm -rf .git
-```
+- **Configure the project settings**: Once the project is imported to the vercel platform, configure your project settings in the Vercel dashboard. You can specify settings such as the build command, environment variables, and deployment options.
 
-## **Options ✍️**
+- **Deploy your project**: To deploy your project, simply push your changes to your Git repository. Vercel will automatically build and deploy your app to a production environment. Alternative to doing that on vercel platform a CI/CD pipeline can be created, integrating the Vercel deploy after some checks are made
 
-1. Check lint
+- **Set up custom domains and SSL**: To set up custom domains and SSL for your app, the Vercel dashboard is available to configure DNS settings and generate SSL certificates.
 
-```
-yarn lint
-```
-
-2. Fix lint
-
-```
-yarn lint:fix
-```
-
-3. Check prettier
-
-```
-yarn prettier
-```
-
-4. Fix prettier
-
-```
-yarn prettier:fix
-```
-
-5. Fix lint and prettier
-
-```
-yarn format
-```
+- **Monitor your app**: Use the Vercel dashboard to monitor your app and view logs and analytics. You can also set up alerts to be notified of any issues or errors.
